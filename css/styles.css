@@ -5,6 +5,12 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #F8F8FF;
+    overflow-x: hidden; /* Evitar rolagem horizontal */
+    position: relative; /* Permite o uso de posicionamento absoluto em elementos dentro dele */
+    min-height: 100vh; /* Garante que o corpo da página ocupe toda a altura da tela */
+    background-image: url('caminho-da-imagem.jpg'); /* Substitua pelo caminho da sua imagem de fundo */
+    background-size: cover; /* Garante que a imagem de fundo cubra toda a tela */
+    background-position: center; /* Centraliza a imagem de fundo */
 }
 
 header {
@@ -13,6 +19,8 @@ header {
     text-align: center;
     padding: 1.5rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;  /* Garante que o header tenha 100% de largura */
+    margin: 0;    /* Remove margens que poderiam estar afetando o layout */
 }
 
 nav ul {
@@ -21,10 +29,8 @@ nav ul {
     margin: 0;
     display: flex;
     justify-content: center;
-}
-
-nav ul li {
-    margin: 0 1.5rem;
+    gap: 0.1rem; 
+    flex-wrap: nowrap; /* Impede que os itens quebrem para a linha de baixo */
 }
 
 nav ul li a {
@@ -34,6 +40,7 @@ nav ul li a {
     padding: 0.5rem 1rem;
     border-radius: 5px;
     transition: background-color 0.3s, transform 0.3s;
+    white-space: nowrap; /* Impede quebra de linha no texto do link */
 }
 
 nav ul li a:hover {
@@ -42,7 +49,7 @@ nav ul li a:hover {
 }
 
 main {
-    max-width: 900px;
+    max-width: 100%; /* Adapta a largura para telas menores */
     width: 90%;
     background: #ffffff;
     padding: 2rem;
@@ -66,29 +73,15 @@ ul {
     padding-left: 20px;
 }
 
-/* .galeria-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
+#galeria{
+    width: 90%;
+    margin: 0 auto; /* Centraliza o contêiner */
 }
-
-.galeria-container img {
-    width: 100%;
-    max-width: 200px;
-    border-radius: 10px;
-    transition: transform 0.3s;
-}
-
-.galeria-container img:hover {
-    transform: scale(1.05);
-} */
 
 .galeria-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 10px;
-    justify-content: center;
 }
 
 .galeria-container img {
@@ -98,17 +91,190 @@ ul {
     transition: transform 0.3s;
 }
 
-@media (min-width: 600px) {
-    .galeria-container {
-        grid-template-columns: repeat(2, 1fr);
+#servicos h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.servicos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+   
+}
+
+.servico-item {
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 140px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s;
+}
+
+.servico-item i {
+    font-size: 2rem;
+    color: #4CAF50;
+    margin-bottom: 5px;
+}
+
+.servico-item h4 {
+    font-size: 0.95rem;
+    color: #555;
+    margin: 0;
+}
+
+/* Botão */
+.btn-servicos {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: rgba(255, 140, 0, 0.8); /* Cor laranja com leve transparência */
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+    border-radius: 30px;
+    transition: background-color 0.3s;
+    position: absolute; /* Posicionamento absoluto dentro da section */
+    left: 50%; /* Centraliza o botão horizontalmente */
+    transform: translateX(-50%);
+    bottom: 10%; /* Ajuste a distância da parte inferior conforme necessário */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .btn-servicos {
+        bottom: 5%; /* Ajuste para telas menores */
     }
 }
 
-@media (min-width: 900px) {
-    .galeria-container {
-        grid-template-columns: repeat(4, 1fr);
+
+@media (max-width: 480px) {
+    .servico-item {
+        max-width: 100%;
+    }
+    .btn-servicos {
+        display: inline-block;
+        padding: 5px 10px;
+        background-color: rgba(255, 140, 0, 0.8); /* Cor laranja com leve transparência */
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.8em;
+        border-radius: 30px;
+        transition: background-color 0.3s;
+        position: absolute; /* Agora o botão é posicionado em relação ao body */
+        left: 50%;
+        transform: translateX(-50%); /* Centraliza o botão horizontalmente */
+        bottom: 5%; /* Coloca o botão a 10% de distância da parte inferior */
+    }
+    
+}
+
+
+.servico-item:hover {
+    transform: scale(1.05);
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px; /* Aumentei o espaçamento entre os cards */
+    padding: 20px;
+    margin: 30px;
+}
+
+.products h1 {
+    width: 100%;
+    text-align: center; /* Centraliza o título */
+    margin-bottom: 20px; /* Adiciona um espaçamento abaixo do título */
+    display: block;
+}
+
+
+.product-container {
+    display: flex;
+    justify-content: space-between; /* Alinha os itens igualmente com espaço entre eles */
+    flex-wrap: nowrap; /* Evita que os itens se quebrem em uma nova linha */
+    gap: 10px; /* Espaçamento entre os itens */
+    overflow-x: auto; /* Permite rolar horizontalmente se necessário */
+    padding: 20px;
+}
+
+.product-item {
+    display: flex;
+    flex-direction: column; /* Mantém os itens empilhados */
+    justify-content: space-between; /* Distribui os elementos uniformemente */
+    align-items: center; /* Centraliza o conteúdo */
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    height: 350px; /* Aumentei um pouco a altura para evitar que o botão fique escondido */
+    width: 200px; /* Defini um tamanho fixo para os cards */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+    color: green;
+    font-size: 1.5rem;
+}
+
+.product-item img {
+    width: 100%;
+    height: auto;
+    max-height: 150px; /* Defini um limite para a imagem não ficar muito grande */
+    border-radius: 10px;
+    margin-bottom: 10px; /* Espaçamento entre a imagem e o botão */
+}
+
+.product-item .btnModelo {
+    margin-top: auto; /* Faz com que o botão desça até a borda inferior do card */
+    padding: 10px;
+    background: #4CAF50;
+    border: none;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+    font-size: 1.2rem;
+}
+
+.product-item .btnModelo:hover {
+    background-color: green;
+    transform: scale(1.05);
+}
+
+
+.product-item:hover {
+    transform: scale(1.05); /* Efeito de zoom no item */
+}
+
+@media (max-width: 1024px) {
+    .product-item {
+        flex: 1 1 calc(33.33% - 20px); /* 3 colunas em telas médias */
     }
 }
+
+@media (max-width: 768px) {
+    .product-container {
+        flex-wrap: wrap; /* Permite que os itens quebrem em múltiplas linhas em telas menores */
+    }
+
+    .product-item {
+        flex: 1 1 calc(50% - 20px); /* 2 colunas em telas médias */
+        width: 45%; /* Ajusta para 2 colunas em telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    .product-item {
+        flex: 1 1 calc(100% - 20px); /* 1 coluna em celulares */
+        width: 100%; /* Cada item ocupa toda a largura em telas pequenas */
+    }
+}
+
 
 
 form {
@@ -120,7 +286,8 @@ form label {
     margin: 0.5rem 0 0.2rem;
 }
 
-form input, form textarea {
+form input,
+form textarea {
     padding: 0.5rem;
     margin-bottom: 1rem;
     border: 1px solid #ccc;
@@ -128,7 +295,8 @@ form input, form textarea {
     transition: border-color 0.3s;
 }
 
-form input:focus, form textarea:focus {
+form input:focus,
+form textarea:focus {
     border-color: #4CAF50;
     outline: none;
 }
@@ -158,3 +326,105 @@ footer {
     width: 100%;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
 }
+
+#contato .container {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+}
+
+.input-group {
+    margin-bottom: 1.2rem;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+    color: #333;
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus,
+.input-group textarea:focus,
+.input-group select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.finish-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Estilos para o botão de voltar ao topo */
+.btn-topo {
+    position: fixed;
+    bottom: 15px;
+    right: 20px; /* Afasta da margem direita */
+    background: linear-gradient(45deg, #007bff, #00d4ff);
+    color: white;
+    padding: 8px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 1.2em; /* Tamanho da seta */
+    text-decoration: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .btn-topo {
+        bottom: 15px; /* Mantém afastado do rodapé */
+        right: 47px; /* Aumentado o espaçamento da margem direita */
+        width: 35px;
+        height: 35px;
+        font-size: 1em;
+    }
+}
+
+.btn-topo:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(45deg, #0056b3, #0099cc);
+}
+
+.btn-topo:active {
+    transform: scale(0.9);
+}
+
+/* Manter o botão visível quando o rodapé for atingido */
+footer {
+    position: relative;
+    padding-bottom: 50px; /* Adiciona espaço suficiente para o botão não desaparecer */
+}
+

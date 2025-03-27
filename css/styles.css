@@ -422,9 +422,76 @@ textarea {
     transform: scale(0.9);
 }
 
-/* Manter o botão visível quando o rodapé for atingido */
 footer {
-    position: relative;
-    padding-bottom: 50px; /* Adiciona espaço suficiente para o botão não desaparecer */
+    background-color: #343a40; /* Cor escura para sofisticação */
+    color: #fff;
+    text-align: center;
+    padding: 20px 15px;
+    font-size: 14px;
 }
 
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.footer-dev a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.footer-dev a:hover {
+    color: #1ebea5; /* Cor do WhatsApp */
+}
+
+.footer-dev {
+    margin-top: 10px;
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+.footer-dev i {
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+.click-text {
+    font-size: 12px;
+    color: #bbb;
+    font-style: italic;
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* Responsivo para dispositivos móveis */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer-info, .footer-dev {
+        margin-bottom: 15px;
+    }
+}
+
+/* Responsivo para telas maiores */
+@media (min-width: 768px) {
+    .footer-container {
+        flex-direction: row;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: auto;
+    }
+}

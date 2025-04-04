@@ -8,3 +8,5 @@
 ## Galeria de Fotos
 ![image](https://github.com/user-attachments/assets/6261afbc-9452-4cd1-93e2-a54e0f2bc0e8)
 
+## Formulário para agendamentos e Rodapé
+![image](https://github.com/user-attachments/assets/3363b464-616d-419c-bf81-e12153dff960)
